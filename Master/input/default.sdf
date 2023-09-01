@@ -1,0 +1,60 @@
+#----<ESA-MASTER>--------------------------------------------------------------
+#
+#          __/_/  __/__/  __/__/   _/__/_/ __/__/__/ __/__/__/ __/_/__/
+#         __/ _/__/ __/ __/   __/ __/        __/    __/       __/    __/
+#        __/  __/  __/ __/__/__/  __/__/    __/    __/__/    __/_/__/
+#       __/       __/ __/   __/      __/   __/    __/       __/    __/
+#      __/       __/ __/   __/ _/__/_/    __/    __/__/__/ __/     __/
+#
+# __ ESA Meteoroid & Space Debris Terrestrial Environment Reference Model__
+#-----------------------------------------------------------------------------
+# Purpose: Definition of oriented surfaces.
+#-----------------------------------------------------------------------------
+# Note: Lines which may be edited by the user are NOT marked by comment
+#       sign ('#').
+#-----------------------------------------------------------------------------
+#
+#---------------------------< Spectrum Settings >-----------------------------
+# Note: In case of only one defined oriented plate, specify if you wish to
+#       get surface unspecific flux distributions with respect to a sphere,
+#       or with respect to the (single) defined surface.
+#-----------------------------------------------------------------------------
+# Surface flux switch
+1            -(0,1)-     0 = flux with respect to a sphere
+#                         1 = flux with respect to the defined surface
+#
+#---------------------------< Surface Settings >-----------------------------
+# Note: Define the surfaces to be analyzed.
+#-----------------------------------------------------------------------------
+#
+# No.:       -(1:10)-   surface number
+#                        (up to 10 active oriented surfaces may be defined)
+#
+# Sw.:       -(0,1)-   surface switch
+#                        0 = surface is switched off
+#                        1 = surface is activated
+#
+# Orient.:   -(1:3)-   surface orientation switch
+#                        1 = earth oriented
+#                            (Angle A is azimuth of surface normal
+#                             Angle h is elevation of surface normal)
+#                        2 = sun oriented
+#                            (Angle A is right asc. deviation from sun LOS
+#                             Angle h is declination deviation from sun LOS
+#                        3 = inertially fixed
+#                            (Angle A is right asc. of surface normal
+#                             Angle h is declination of surface normal)
+#
+#    No.    Sw.     Orient.         Angle A    Angle h         Comment
+# (1-10)  (0,1)     (1,2,3)           [deg]      [deg]
+#-----------------------------------------------------------------------------
+ 1           1           1              0.0      -90.0         Surface-01
+ 2           0           1              0.0       90.0         Surface-02
+ 3           0           1            180.0        0.0         Surface-03
+ 4           0           1              0.0      -90.0         Surface-04
+ 5           0           1             90.0        0.0         Surface-05
+ 6           0           1            -90.0        0.0         Surface-06
+ 7           0           2              0.0        0.0         Surface-07
+ 8           0           2            180.0        0.0         Surface-08
+ 9           0           1             30.0       60.0         Surface-09
+10           0           3            -65.0      -10.0         Surface-10
