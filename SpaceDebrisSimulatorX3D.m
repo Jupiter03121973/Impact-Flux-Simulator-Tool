@@ -218,9 +218,6 @@ function [SimOut,rhoV,aver] = SpaceDebrisSimulatorX3D(AtmospericData,OS,SS,OP,Gr
     
     %% filter waves
     
-    % ersten und letzten Wert glätten oder weglassen
-    % umschaltfunktion in plot einbauen (über orbitperiode mitteln)
-    
     rows = zeros(1,1);
     trows = zeros(1,1);
     aver = zeros(1,2);
@@ -276,27 +273,27 @@ end
 
 
 function [R, V] = kepler_to_cartesian(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu)
-    % Umwandeln der Winkel von Grad in Radiant
+    % Convert angles from degrees to radians
     i = deg2rad(i_deg);
     LAN = deg2rad(LAN_deg);
     AP = deg2rad(AP_deg);
     f = deg2rad(f_deg);
 
-    % Verbesserte Berechnung des spezifischen Drehimpulses
+    % Improved calculation of specific angular momentum
     %h = sqrt(mu * a * (1 - e) * (1 + e));
     
-    % Verbesserte Berechnung des Radius
+    % Improved calculation of radius
     r = a * (1 - e^2) / (1 + e * cos(f));
     
-    % Geschwindigkeitsvektor im Perifokal-System
+    % Velocity vector in the perifocal system
     v_r = sqrt(mu / (a * (1 - e^2))) * e * sin(f);
     v_theta = sqrt(mu / (a * (1 - e^2))) * (1 + e * cos(f));
     
-    % Position und Geschwindigkeitsvektoren im Perifokal-System
+    % Position and velocity vectors in the perifocal system
     r_vec = [r * cos(f); r * sin(f); 0];
     v_vec = [v_r * cos(f) - v_theta * sin(f); v_r * sin(f) + v_theta * cos(f); 0];
     
-    % Transformationsmatrix
+    % Transformation matrix
     Q = [cos(LAN) * cos(AP) - sin(LAN) * sin(AP) * cos(i), ...
         -cos(LAN) * sin(AP) - sin(LAN) * cos(AP) * cos(i), ...
         sin(LAN) * sin(i);
@@ -307,19 +304,19 @@ function [R, V] = kepler_to_cartesian(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu)
         
         sin(AP) * sin(i), cos(AP) * sin(i), cos(i)];
     
-    % Transformation der Vektoren ins Inertialsystem
+    % Transformation of vectors to the inertial frame
     R = Q * r_vec;
     V = Q * v_vec;
 end
 
-function [R, V] = kepler_to_cartesian2(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu, addN,addV)
-    % Umwandeln der Winkel von Grad in Radiant
+function [R, V] = kepler_to_cartesian2(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu, addN, addV)
+    % Convert angles from degrees to radians
     i = deg2rad(i_deg);
     LAN = deg2rad(LAN_deg);
     AP = deg2rad(AP_deg);
     f = deg2rad(f_deg);
 
-    % Spezielle Fälle für e und i
+    % Special cases for e and i
     if e == 0 && i ~= 0 && strcmp(addN, 'arglat')
         AP = 0;
         f = addV;  % Argument of Latitude = Argument of Periapsis + True Anomaly
@@ -332,21 +329,21 @@ function [R, V] = kepler_to_cartesian2(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu, 
         f = addV;  % True Longitude = Longitude of Ascending Node + True Anomaly
     end
 
-    % Verbesserte Berechnung des spezifischen Drehimpulses
+    % Improved calculation of specific angular momentum
     %h = sqrt(mu * a * (1 - e) * (1 + e));
     
-    % Verbesserte Berechnung des Radius
+    % Improved calculation of radius
     r = a * (1 - e^2) / (1 + e * cos(f));
     
-    % Geschwindigkeitsvektor im Perifokal-System
+    % Velocity vector in the perifocal system
     v_r = sqrt(mu / (a * (1 - e^2))) * e * sin(f);
     v_theta = sqrt(mu / (a * (1 - e^2))) * (1 + e * cos(f));
     
-    % Position und Geschwindigkeitsvektoren im Perifokal-System
+    % Position and velocity vectors in the perifocal system
     r_vec = [r * cos(f); r * sin(f); 0];
     v_vec = [v_r * cos(f) - v_theta * sin(f); v_r * sin(f) + v_theta * cos(f); 0];
     
-    % Transformationsmatrix
+    % Transformation matrix
     Q = [cos(LAN) * cos(AP) - sin(LAN) * sin(AP) * cos(i), ...
         -cos(LAN) * sin(AP) - sin(LAN) * cos(AP) * cos(i), ...
         sin(LAN) * sin(i);
@@ -357,7 +354,7 @@ function [R, V] = kepler_to_cartesian2(a, e, i_deg, LAN_deg, AP_deg, f_deg, mu, 
         
         sin(AP) * sin(i), cos(AP) * sin(i), cos(i)];
     
-    % Transformation der Vektoren ins Inertialsystem
+    % Transformation of vectors to the inertial frame
     R = Q * r_vec;
     V = Q * v_vec;
 end

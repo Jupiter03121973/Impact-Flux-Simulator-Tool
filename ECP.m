@@ -519,7 +519,7 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
     end
 
     writecell(PropData, filename, 'Sheet', sheetName);
-    % Open excelfile with COM-objects
+    % Open Excel file with COM-objects
     excelObj = actxserver('Excel.Application');
     workbookObj = excelObj.Workbooks.Open(fullfile(pwd, filename));
     sheetObj = workbookObj.Sheets.Item(sheetName);
@@ -531,33 +531,33 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
     % adapt column width
     columnBRange.EntireColumn.AutoFit();
 
-    % Save Excelfile and close
+    % Save Excel file and close
     workbookObj.Save();
     workbookObj.Close();
     excelObj.Quit();
 
     sheetName = 'ObjectMissionFlux per year'; % Name of workbook 
     if strcmp(ObjSpec.SpecOption,'Cubesat') 
-        % Ihre Originaldatenmatrix
+        % Original data matrix"
         originalData = ObjectMissionFlux.Cubesat.Total;
         
-        % Die Größe der Originaldatenmatrix
+        % Size of original matrix
         [rows, ~] = size(originalData);
         
-        % Entfernen jeder 8. Zeile
+        % Remove ervery 8th row
         indexToRemove = 8:8:rows;
         originalData(indexToRemove, :) = [];
         
-        % Neue Größe der Datenmatrix
+        % New size of Datamatrix
         [rows, cols] = size(originalData);
         
-        % Die Anzahl der zusätzlichen Zeilen für die Strings
-        numExtraRows = floor(rows / 7);  % +1 für den ersten Titel
+        % Number of additional rows for the strings
+        numExtraRows = floor(rows / 7);
         
-        % Erstellen einer leeren Zellenmatrix
+        % Creating an empty cell matrix
         CubesatData = cell(rows + numExtraRows, cols);
         
-        % Einfügen der Originaldaten und der Strings
+        % "Inserting the original data and the strings
         count = 1;
         titleCount = 1;
         
@@ -573,26 +573,26 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
 
         data = CubesatData;
     elseif strcmp(ObjSpec.SpecOption,'Cubesat with Dragsail')
-        % Ihre Originaldatenmatrix
+        % Original data matrix"
         originalData = ObjectMissionFlux.Cubesat.Total;
         
-        % Die Größe der Originaldatenmatrix
+        % Size of the original data matrix
         [rows, ~] = size(originalData);
         
-        % Entfernen jeder 8. Zeile
+        % Remove every 8th row
         indexToRemove = 8:8:rows;
         originalData(indexToRemove, :) = [];
         
-        % Neue Größe der Datenmatrix
+        % New size of the data matrix
         [rows, cols] = size(originalData);
         
-        % Die Anzahl der zusätzlichen Zeilen für die Strings
-        numExtraRows = floor(rows / 7);  % +1 für den ersten Titel
+        % Number of additional rows for the strings
+        numExtraRows = floor(rows / 7); 
         
-        % Erstellen einer leeren Zellenmatrix
+        % Creating an empty cell matrix
         CubesatData = cell(rows + numExtraRows, cols);
         
-        % Einfügen der Originaldaten und der Strings
+        % Inserting the original data and the strings
         count = 1;
         titleCount = 1;
         
@@ -606,26 +606,26 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
             end
         end   
     
-        % Ihre Originaldatenmatrix
+        % Original data matrix
         originalData = ObjectMissionFlux.Dragsail.Total;
         
-        % Die Größe der Originaldatenmatrix
+        % Size of the original data matrix
         [rows, ~] = size(originalData);
         
-        % Entfernen jeder 8. Zeile
+        % Remove every 8th row
         indexToRemove = 8:8:rows;
         originalData(indexToRemove, :) = [];
         
-        % Neue Größe der Datenmatrix
+        % New size of the data matrix
         [rows, cols] = size(originalData);
         
-        % Die Anzahl der zusätzlichen Zeilen für die Strings
-        numExtraRows = floor(rows / 7);  % +1 für den ersten Titel
+        % Number of additional rows for the strings
+        numExtraRows = floor(rows / 7); 
         
-        % Erstellen einer leeren Zellenmatrix
+        % Creating an empty cell matrix
         DragsailData = cell(rows + numExtraRows, cols);
         
-        % Einfügen der Originaldaten und der Strings
+        % Inserting the original data and the strings
         count = 1;
         titleCount = 1;
         
@@ -641,26 +641,26 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
 
         data = [CubesatData ; DragsailData];
     else
-        % Ihre Originaldatenmatrix
+        % Original data matrix
         originalData = ObjectMissionFlux.Sphere;
         
-        % Die Größe der Originaldatenmatrix
+        % Size of the original data matrix
         [rows, ~] = size(originalData);
         
-        % Entfernen jeder 8. Zeile
+        % Remove every 8th row
         indexToRemove = 8:8:rows;
         originalData(indexToRemove, :) = [];
         
-        % Neue Größe der Datenmatrix
+        % New size of the data matrix
         [rows, cols] = size(originalData);
         
-        % Die Anzahl der zusätzlichen Zeilen für die Strings
-        numExtraRows = floor(rows / 7);  % +1 für den ersten Titel
+        % Number of additional rows for the strings
+        numExtraRows = floor(rows / 7); 
         
-        % Erstellen einer leeren Zellenmatrix
+        % Creating an empty cell matrix
         SphereData = cell(rows + numExtraRows, cols);
         
-        % Einfügen der Originaldaten und der Strings
+        % Inserting the original data and the strings
         count = 1;
         titleCount = 1;
         
@@ -677,19 +677,19 @@ function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,Ob
         data = SphereData;
     end
     
-    % Zeilentitel erstellen
+    % Creating row titles
     rowTitles = {'','Time [d]','10^-3 bis 10^-2 [kg]','10^-2 bis 10^-1 [kg]','10^-1 bis 10^0 [kg]','10^0 bis 10^1 [kg]','10^1 bis 10^2 [kg]','10^2 bis 10^3 [kg]'}; % Mit Leerzeile am Ende
     numRows = size(data, 1);
     numTitleRows = length(rowTitles);
     fullRowTitles = repmat(rowTitles, 1, ceil(numRows/numTitleRows));
     fullRowTitles = fullRowTitles(1:numRows); % Auf die Gesamtzeilenzahl der Matrix kürzen
     
-    % Daten und Titel zusammenfügen
+    % Merging data and titles
     cellData = cell(size(data, 1), size(data, 2) + 1);
     cellData(:,1) = fullRowTitles(:);
     cellData(:,2:end) = data;
     
-    % Daten in Excel schreiben, beginnend bei der ersten Spalte (A)
+    % Writing data to Excel, starting at the first column (A)
     writecell(cellData, filename, 'Sheet', sheetName, 'Range', 'A1');
 
     % Write average results in file
@@ -837,26 +837,26 @@ end
 
 function  DatabaseAltitudeInc = getDataBase(INCInterval,SpecOption) % Gets the correct database file
 
-    % Filename for Excelfile
+    % Filename for Excel file
     if strcmp(SpecOption,'Sphere')
         filename_excel = sprintf('Impact-Flux-Database/FluxAltitudeInclination/FluxAltitudeMass_INC%d.xlsx',INCInterval);
     else
         filename_excel = sprintf('Impact-Flux-Database/FluxAltitudeInclination_FS/FluxAltitudeMass_FS_INC%d.xlsx',INCInterval);
     end
     
-    % Read Excelfile
+    % Read Excel file
     DatabaseAltitudeInc = readmatrix(filename_excel);
 end
 
 function  DatabaseTimeAltitude = getTimeDataBase(SMATimeInterval,SpecOption) % Gets the correct database file
-    % Filename for Excelfile
+    % Filename for Excel file
     if strcmp(SpecOption,'Sphere')
         filename_excel = sprintf('Impact-Flux-Database/FluxTimeAltitude/FluxTimeMass_Altitude%d.xlsx',SMATimeInterval);
     else
         filename_excel = sprintf('Impact-Flux-Database/FluxTimeAltitude_FS/FluxTimeMass_FS_Altitude%d.xlsx',SMATimeInterval);
     end
     
-    % Read Excelfile
+    % Read Excel file
     DatabaseTimeAltitude = readmatrix(filename_excel);
 end
 
