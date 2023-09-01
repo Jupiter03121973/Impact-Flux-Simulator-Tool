@@ -1,11 +1,10 @@
 function dfdx = EoM3D (t,x,Ra,Rb,mu,J2,OS,AtmospericData,GravityModel)
-    %!!!!!!!!!!!!!!!!!!!!!! ab wann NaN wenn rho zu klein wird
 
     if contains(AtmospericData.atmosphere, "None")
         aD = zeros(1,3);
         aL = zeros(1,3);
     elseif contains(AtmospericData.atmosphere, "Exponential") || contains(AtmospericData.atmosphere, "nrlmsise00")        
-        R = sqrt((Ra*cos(x(3)))^2+(Rb*sin(x(3)))^2);            % WGS84 Ellipsoid radius [m]
+        R = sqrt((Ra*cos(x(3)))^2+(Rb*sin(x(3)))^2);            % WGS84 ellipsoid radius [m]
         if isnan(x(1))|| isnan(R)
             StopIn = 1;
             stopode(StopIn)
@@ -25,20 +24,20 @@ function dfdx = EoM3D (t,x,Ra,Rb,mu,J2,OS,AtmospericData,GravityModel)
          
 
         if OS.LtD ~= 0
-            %Methode 1
-            uL = aD .* OS.LtD;                                      % adapt Lift with LtD factor
-            aL(1) = sqrt((uL(2)*cos(x(3))*x(1))^2+(uL(3)*x(1))^2); % get radial component through length of theta and phi resulting force
-            aL(2) = -(x(1)*cos(x(3))*uL(2)/aL(1))*uL(1);             % normalize phi and give it length of former radial component 
-            aL(3) = -(x(1)*uL(3)/aL(1))*uL(1);                       % normalize theta and give it length of former radial component 
+            %Method 1
+            uL = aD .* OS.LtD;                                      % Adapt Lift with LtD factor
+            aL(1) = sqrt((uL(2)*cos(x(3))*x(1))^2+(uL(3)*x(1))^2); % Get radial component through length of theta and phi resulting force
+            aL(2) = -(x(1)*cos(x(3))*uL(2)/aL(1))*uL(1);             % Normalize phi and give it length of former radial component 
+            aL(3) = -(x(1)*uL(3)/aL(1))*uL(1);                       % Normalize theta and give it length of former radial component 
          
-            %Methode 2
-%             xr(1) = cos(x(2))*cos(x(3));  % Spherical Coordinates in [m]
-%             xr(2) = sin(x(2))*cos(x(3));  % Spherical Coordinates in [m]
-%             xr(3) = sin(x(3));            % Spherical Coordinates in [m] 
+            %Method 2
+%             xr(1) = cos(x(2))*cos(x(3));  % Spherical coordinates in [m]
+%             xr(2) = sin(x(2))*cos(x(3));  % Spherical coordinates in [m]
+%             xr(3) = sin(x(3));            % Spherical coordinates in [m] 
 % 
-%             v(1) = x(4)*cos(x(2))*cos(x(3))+x(1)*x(5)*cos(x(3))*-sin(x(2))+x(1)*x(6)*-cos(x(2))*sin(x(3));  % Spherical Coordinates in [m/s]
-%             v(2) = x(4)*sin(x(2))*cos(x(3))+x(1)*x(5)*cos(x(3))*cos(x(2))+x(1)*x(6)*-sin(x(2))*sin(x(3));   % Spherical Coordinates in [m/s]
-%             v(3) = x(4)*sin(x(3))+x(1)*x(5)*cos(x(3))*0+x(1)*x(6)*cos(x(3));                                % Spherical Coordinates in [m/s]
+%             v(1) = x(4)*cos(x(2))*cos(x(3))+x(1)*x(5)*cos(x(3))*-sin(x(2))+x(1)*x(6)*-cos(x(2))*sin(x(3));  % Spherical coordinates in [m/s]
+%             v(2) = x(4)*sin(x(2))*cos(x(3))+x(1)*x(5)*cos(x(3))*cos(x(2))+x(1)*x(6)*-sin(x(2))*sin(x(3));   % Spherical coordinates in [m/s]
+%             v(3) = x(4)*sin(x(3))+x(1)*x(5)*cos(x(3))*0+x(1)*x(6)*cos(x(3));                                % Spherical coordinates in [m/s]
 %             vges = sqrt(v(1)^2+v(2)^2+v(3)^2); 
 % 
 %             vn = v/vges; % normalize velocity vector
