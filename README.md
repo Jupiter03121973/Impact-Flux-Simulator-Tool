@@ -19,7 +19,7 @@ Inhaltsverzeichnis
 
 1. Einleitung
 -------------
-Der Impact-Flux-Simulator ist ein Software-Tool, das im Rahmen meiner Bachelorarbeit entwickelt wurde. Es dient zur Berechnung von Orbits und zur Abschätzung des MMOD-Fluxes (Mikrometeoroiden und Weltraumschrott). Es verfügt über eine benutzerfreundliche Oberfläche, die es dem Anwender erleichtert, komplexe Berechnungen mit wenigen Klicks und kurzer Rechenzeit durchzuführen.
+Der Impact-Flux-Simulator ist ein Software-Tool, das im Rahmen einer Bachelorarbeit entwickelt wurde. Es dient zur Berechnung von Orbits und zur Abschätzung des MMOD-Fluxes (Mikrometeoroiden und Weltraumschrott). Es verfügt über eine benutzerfreundliche Oberfläche, die es dem Anwender erleichtert, komplexe Berechnungen mit wenigen Klicks und kurzer Rechenzeit durchzuführen.
 
 2. Systemvoraussetzungen
 -----------------------
