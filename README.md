@@ -29,8 +29,8 @@ Der Impact-Flux-Simulator ist ein Software-Tool, das im Rahmen einer Bachelorarb
 
 3. Installation
 ---------------
-1. Laden Sie alle Dateien des Projekts mit folgendem Link [Github Link] herunter.
-2. Das Programm muss standardmäßig in einem Ordner mit der Bezeichnung Impact-Flux-Simulator liege.
+1. Laden Sie alle Dateien des Projekts mit folgendem Link "https://github.com/Jupiter03121973/Impact-Flux-Simulator-Tool.git" herunter.
+2. Das Programm muss standardmäßig in einem Ordner mit der Bezeichnung Impact-Flux-Simulator liegen.
 3. Bei Benutzung des "Complex Mode" muss MASTER im gleichen Ordner installiert werden in dem sich auch der Ordner Impact-Flux-Simulator befindet. Bei Abweichungen müssen die im Programmcode benutzten Pfade geändert werden.
 
 4. Benutzung
