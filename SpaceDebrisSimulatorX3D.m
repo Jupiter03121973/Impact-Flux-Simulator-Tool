@@ -116,7 +116,7 @@ function [SimOut,rhoV,aver] = SpaceDebrisSimulatorX3D(AtmospericData,OS,SS,OP,Gr
     vphi = sc(:,5);     % [rad/s]
     vtheta = sc(:,6);   % [rad/s]
     
-    VgesSp = sqrt(vr.^2+(r.*vphi.*cos(Theta)).^2+(r.*vtheta).^2)/1000; %!!!!!!!!!!!!!!!!!!!!!!
+    VgesSp = sqrt(vr.^2+(r.*vphi).^2+(r.*vtheta).^2)/1000; %!!!!!!!!!!!!!!!!!!!!!!
     
     % Get Atmosphere Data
     [rho,tV,hV]= Atmosphere(AtmospericData);
@@ -170,7 +170,7 @@ function [SimOut,rhoV,aver] = SpaceDebrisSimulatorX3D(AtmospericData,OS,SS,OP,Gr
     end    
    
     % 2D Spherical Coordinates
-    altitude = r-RE;      % [m] !!!!!!!!!!!!!!!!Höhe auf Variablen Wert beziehen!!!!!!!!!!!!!!!!!!!!!
+    altitude = r-RE;      % [m] Höhe auf Variablen Wert beziehen!
 
     if OP.RS == 2
         if OP.i == 0 && OP.e > 0

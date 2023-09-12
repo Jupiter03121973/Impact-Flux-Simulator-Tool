@@ -200,7 +200,7 @@ function [AllOrbitTotalResult,AllOrbitAverageResult,ObjectMissionFlux,SigmResult
             % Checking interval in line 2 and column 11
             INCInterval = determine_interval(AktOrbit(1, 11), 10);  
 
-            % Check timeinterval for first iteration
+            % Check time interval for first iteration
 
             % Evaluate remaining days of month
             maxAnzahlTage = eomday(year(aktuellesDatum), month(aktuellesDatum)); 
@@ -287,7 +287,7 @@ end
 function SaveData(AllOrbitAverageResult,AllOrbitTotalResult,ObjectMissionFlux,ObjSpec,OrbitSimSpec) % Saves all data in a *.xlsx file 
     % Creating filename with date and time
     now = datetime('now','Format','dd-MMM-yyyy-HH-mm-ss');
-    filename = fullfile('.','Output',sprintf('DebrisSim-%s.xlsx',now));
+    filename = fullfile('.','Output',sprintf('FluxSim-%s.xlsx',now));
 
     sheetName = 'InputData'; % Name of Excel Workbook (Layer 3)
     if strcmp(ObjSpec.SpecOption,'Cubesat') 
