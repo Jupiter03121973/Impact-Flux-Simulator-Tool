@@ -29,18 +29,19 @@ Der Impact-Flux-Simulator ist ein Software-Tool, das im Rahmen einer Bachelorarb
 
 3. Installation
 ---------------
-1. Laden Sie alle Dateien des Projekts mit folgendem Link "https://github.com/Jupiter03121973/Impact-Flux-Simulator-Tool.git" herunter.
+1. Laden Sie alle Dateien des Projekts, welche unter folgendem Link zu finden sind herunter "https://github.com/Jupiter03121973/Impact-Flux-Simulator-Tool.git".
 2. Das Programm muss standardmäßig in einem Ordner mit der Bezeichnung Impact-Flux-Simulator liegen.
-3. Bei Benutzung des "Complex Mode" muss MASTER im gleichen Ordner installiert werden in dem sich auch der Ordner Impact-Flux-Simulator befindet. Bei Abweichungen müssen die im Programmcode benutzten Pfade geändert werden.
+3. Bei Benutzung des "Complex Mode" muss MASTER im gleichen Ordner installiert werden in dem sich auch der Ordner Impact-Flux-Simulator befindet. Bei Abweichungen müssen die im Programmcode benutzten Pfade geändert werden. Dies betrifft die Datei ECP.m.
 
 4. Benutzung
 ------------
-1. Starten Sie Matlab R2022b über das Desktop-Symbol oder das Startmenü.
-2. Doppelklicken Sie auf die heruntergeladene Datei GUISpaceDebrisSim.mlapp im Projektverzeichnis und starten diese.
-3. Geben Sie die erforderlichen Parameter ein und klicken Sie auf "Berechnen".
-4. Die Ergebnisse werden im Hauptfenster angezeigt. Sie können die Ergebnisse der Orbitberechnung auch als CSV- oder XLSX-Datei exportieren. Die Ergebnisse der Fluxberechnung werden automatisch im Ordner ".\Output" gespeichert
+1. Starten Sie Matlab über das Desktop-Symbol oder das Startmenü.
+2. Doppelklicken Sie auf die heruntergeladene Datei GUISpaceDebrisSim.mlapp im Projektverzeichnis und starten diese mit dem "Run" Button.
+3. Geben Sie die erforderlichen Parameter ein und klicken Sie auf "Run Orbit Simulation".
+4. Zur Evaluierung der Impakt-Flux-Daten klicken Sie nach erfolgreicher Ermittlung des Bahnverlaufs auf den Button "Run Flux Simulation".
+5. Die Ergebnisse werden im Hauptfenster angezeigt. Sie können die Ergebnisse der Orbitberechnung auch als CSV- oder XLSX-Datei exportieren. Die Ergebnisse der Fluxberechnung werden automatisch im Ordner ".\Output" gespeichert.
 
-5. Lizenz und Copyright
+6. Lizenz und Copyright
 -----------------------
 Copyright:
 
